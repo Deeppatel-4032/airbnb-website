@@ -1,0 +1,47 @@
+<%- include("./partials/head") %>
+  </head>
+
+  <body class="bg-gray-100 text-gray-900">
+    <%- include("partials/nav") %>
+
+      <main class="container mx-auto px-4 py-10">
+        <h2 class="text-3xl font-bold text-red-500 text-center mb-10">
+          Here are our registered homes:
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <% homes.forEach(home=> { %>
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+              <img class="h-48 w-full object-cover"
+                src="<%= home.imageURL || 'https://imgs.search.brave.com/JlhnQ0bqUrCmWaqgn3ErjJS6yCJ5lh_vHpxeq3VPUEQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQ4/MTg2NzUwNC9waG90/by9sb3ZlLW5ldy1o/b3VzZS1hbmQtZmFt/aWx5LWluLXRoZWly/LWJhY2t5YXJkLXRv/Z2V0aGVyLWxvb2tp/bmctYXQtdGhlaXIt/cHJvcGVydHktb3It/bHV4dXJ5LXJlYWwu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PXJnc1pKeWlnajRt/RUE1MVFKVnVBcnB3/T3VzVFU5b1dObzNZ/NGl3X2lBWWs9' %>"
+                alt="<%= home.name %>" />
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-1 truncate">
+                  <%= home.name %>
+                </h3>
+                <p class="text-sm text-gray-600 mb-1">
+                  <%= home.location %>
+                </p>
+                <p class="text-gray-800 font-bold mb-2">₹<%= home.price %>
+                </p>
+
+                <div class="flex items-center text-yellow-500 text-sm">
+                  <% for (let i=1; i <=5; i++) { %>
+                    <% if (i <=Math.floor(home.rating)) { %>
+                      <i class="fas fa-star"></i>
+                      <% } else { %>
+                        <i class="far fa-star"></i>
+                        <% } %>
+                          <% } %>
+                            <span class="ml-2 text-gray-600">
+                              <%= home.rating %> rating
+                            </span>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+        </div>
+      </main>
+  </body>
+
+  </html>

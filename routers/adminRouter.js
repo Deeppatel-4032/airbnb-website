@@ -1,22 +1,21 @@
-// core module
-const path = require("path");
-
 const express = require("express");
 const adminRoute = express.Router();
-
-// local module
-const rootPath = require("../utils/pathUtil");
-
-adminRoute.get("/add-homeForm", (req, res) => {
-  res.sendFile(path.join(rootPath, "views", "addHome.html"));
-});
-
 const registerHome = [];
 
+adminRoute.get("/add-homeForm", (req, res) => {
+  res.render("addHome", {
+    pageTitle: "Add Home To Airbnb",
+    currantPage: "addHome",
+  });
+});
+
 adminRoute.post("/homeAdded", (req, res) => {
-  console.log("Home Registeration successful for : ", req.body, req.body.name);
-  const houseName = registerHome.push({ name: req.body.name });
-  res.sendFile(path.join(rootPath, "views", "homeAdded.html"));
+  console.log("Home Registeration successful for : ", req.body);
+  registerHome.push(req.body);
+  res.render("homeAdded", {
+    pageTitle: "Home Added Successfully",
+    currantPage: "homeAdded",
+  });
 });
 
 exports.adminRoute = adminRoute;

@@ -27,7 +27,10 @@ app.use(userRoute);
 app.use(adminRoute);
 
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(rootPath, "views", "errorPage.html"));
+  res.status(404).render("errorPage", {
+    pageTitle: "Page Not Found",
+    currantPage: "errorPage",
+  });
 });
 
 app.listen(PORT, (err) => {
