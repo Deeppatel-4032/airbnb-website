@@ -3,14 +3,8 @@ const express = require("express");
 const userRoute = express.Router();
 
 // local module
-const { registerHome } = require("./adminRouter");
+const hoemcon = require("../controllers/homeCon");
 
-userRoute.get("/", (req, res) => {
-  res.render("home", {
-    homes: registerHome,
-    pageTitle: "airbnb Home.com",
-    currantPage: "home",
-  });
-});
+userRoute.get("/", hoemcon.getHome);
 
 module.exports = userRoute;

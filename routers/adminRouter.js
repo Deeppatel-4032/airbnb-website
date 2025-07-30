@@ -1,22 +1,10 @@
 const express = require("express");
 const adminRoute = express.Router();
-const registerHome = [];
 
-adminRoute.get("/add-homeForm", (req, res) => {
-  res.render("addHome", {
-    pageTitle: "Add Home To Airbnb",
-    currantPage: "addHome",
-  });
-});
+// local module
+const homeCon = require("../controllers/homeCon");
 
-adminRoute.post("/homeAdded", (req, res) => {
-  console.log("Home Registeration successful for : ", req.body);
-  registerHome.push(req.body);
-  res.render("homeAdded", {
-    pageTitle: "Home Added Successfully",
-    currantPage: "homeAdded",
-  });
-});
+adminRoute.get("/add-homeForm", homeCon.getAddHome);
+adminRoute.post("/homeAdded", homeCon.postAddHome);
 
-exports.adminRoute = adminRoute;
-exports.registerHome = registerHome;
+module.exports = adminRoute;

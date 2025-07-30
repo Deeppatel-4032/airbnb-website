@@ -12,8 +12,9 @@ const PORT = process.env.PORT || 3005;
 
 // local module
 const userRoute = require("./routers/userRouter");
-const { adminRoute } = require("./routers/adminRouter");
+const adminRoute = require("./routers/adminRouter");
 const rootPath = require("./utils/pathUtil");
+const errorCon = require("./controllers/errorCon");
 
 // static path connect css file
 app.use(express.static(path.join(rootPath, "public/css")));
@@ -26,12 +27,8 @@ app.set("views", "views");
 app.use(userRoute);
 app.use(adminRoute);
 
-app.use((req, res) => {
-  res.status(404).render("errorPage", {
-    pageTitle: "Page Not Found",
-    currantPage: "errorPage",
-  });
-});
+// Error Page
+app.use(errorCon.pageNotFound);
 
 app.listen(PORT, (err) => {
   if (!err) {
