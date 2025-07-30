@@ -2,9 +2,11 @@ const express = require("express");
 const adminRoute = express.Router();
 
 // local module
-const homeCon = require("../controllers/homeCon");
+const adminCon = require("../controllers/adminCon");
 
-adminRoute.get("/add-homeForm", homeCon.getAddHome);
-adminRoute.post("/homeAdded", homeCon.postAddHome);
+adminRoute.get("/add-homeForm", adminCon.getAddHome);
+adminRoute.post("/homeAdded", adminCon.postAddHome);
+
+adminRoute.get("/admin-home", adminCon.getAdminHome);
 
 module.exports = adminRoute;

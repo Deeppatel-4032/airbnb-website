@@ -1,7 +1,7 @@
-const Home = require("../models/homeModel");
+const home = require("../models/homeModel");
 
 exports.getAddHome = (req, res) => {
-  res.render("addHome", {
+  res.render("admin/add-home", {
     pageTitle: "Add Home To Airbnb",
     currantPage: "addHome",
   });
@@ -12,21 +12,21 @@ exports.postAddHome = (req, res) => {
 
   const { name, price, location, rating, imageURL } = req.body;
 
-  const createHome = new Home(name, price, location, rating, imageURL);
+  const createHome = new home(name, price, location, rating, imageURL);
   createHome.save();
 
-  res.render("homeAdded", {
+  res.render("admin/home-added", {
     pageTitle: "Home Added Successfully",
     currantPage: "homeAdded",
   });
 };
 
-exports.getHome = (req, res) => {
-  Home.fetchhAll((registerHome) => {
-    res.render("home", {
+exports.getAdminHome = (req, res) => {
+  home.fetchhAll((registerHome) => {
+    res.render("admin/adminHome-list", {
       homes: registerHome,
-      pageTitle: "airbnb Home.com",
-      currantPage: "home",
+      pageTitle: "Admin house Page",
+      currantPage: "admin-home",
     });
   });
 };

@@ -11,7 +11,7 @@ dotEnv.config();
 const PORT = process.env.PORT || 3005;
 
 // local module
-const userRoute = require("./routers/userRouter");
+const storeRouter = require("./routers/storeRouter");
 const adminRoute = require("./routers/adminRouter");
 const rootPath = require("./utils/pathUtil");
 const errorCon = require("./controllers/errorCon");
@@ -24,7 +24,7 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 
 // routes
-app.use(userRoute);
+app.use(storeRouter);
 app.use(adminRoute);
 
 // Error Page
