@@ -1,1 +1,26 @@
-[{"name":"Deep","price":"1200","location":"Mumbai","rating":"5","imageURL":"sacsd"},{"name":"kunal patel","price":"1800","location":"mumbai","rating":"4","imageURL":"sacsd"},{"name":"Jon patel","price":"100000","location":"navsari","rating":"5","imageURL":"https://www.cntraveler.com/story/my-favorite-airbnb-in-puerto-escondido-mexico"}]
+[
+  {
+    "id": "1",
+    "name": "Deep",
+    "price": "1200",
+    "location": "Mumbai",
+    "rating": "5",
+    "imageURL": "sacsd"
+  },
+  {
+    "id": "2",
+    "name": "kunal patel",
+    "price": "1800",
+    "location": "mumbai",
+    "rating": "4",
+    "imageURL": "sacsd"
+  },
+  {
+    "name": "mateshvari park",
+    "price": "1200",
+    "location": "Gujaarat",
+    "rating": "5",
+    "imageURL": "sacsd",
+    "id": "8"
+  }
+]
