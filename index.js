@@ -19,6 +19,7 @@ const errorCon = require("./controllers/errorCon");
 // static path connect css file
 app.use(express.static(path.join(rootPath, "public/css")));
 app.use(express.urlencoded());
+app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -32,6 +33,6 @@ app.use(errorCon.pageNotFound);
 
 app.listen(PORT, (err) => {
   if (!err) {
-    console.log(`server is running on PORT http://localhost:${PORT}`);
+    console.log(`server is running on PORT http://localhost:${PORT}/index`);
   }
 });

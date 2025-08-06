@@ -5,7 +5,7 @@
     "price": "1200",
     "location": "Mumbai",
     "rating": "5",
-    "imageURL": "sacsd"
+    "imageUrl": "/images/house1.png"
   },
   {
     "id": "2",
@@ -13,14 +13,14 @@
     "price": "1800",
     "location": "mumbai",
     "rating": "4",
-    "imageURL": "sacsd"
+    "imageUrl": "/images/house2.png"
   },
   {
     "name": "mateshvari park",
     "price": "1200",
     "location": "Gujaarat",
     "rating": "5",
-    "imageURL": "sacsd",
+    "imageUrl": "/images/house3.png",
     "id": "8"
   }
 ]

@@ -10,9 +10,9 @@ exports.getAddHome = (req, res) => {
 exports.postAddHome = (req, res) => {
   console.log("Home Registeration successful for : ", req.body);
 
-  const { name, price, location, rating, imageURL } = req.body;
+  const { name, price, location, rating, imageUrl } = req.body;
 
-  const createHome = new home(name, price, location, rating, imageURL);
+  const createHome = new home(name, price, location, rating, imageUrl);
   createHome.save();
 
   res.render("admin/home-added", {

@@ -38,8 +38,16 @@ exports.getHoemDetails = (req, res) => {
   const homeId = req.params.homeId;
   console.log("_id", homeId);
 
-  res.render("store/home-detail", {
-    pageTitle: "Home Details",
-    currantPage: "home",
+  home.findById(homeId, (home) => {
+    if (!home) {
+      res.redirect("/home");
+    } else {
+      console.log("home details found", home);
+      res.render("store/home-detail", {
+        home: home,
+        pageTitle: "Home Details",
+        currantPage: "home",
+      });
+    }
   });
 };
