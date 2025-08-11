@@ -4,7 +4,7 @@ const path = require("path");
 
 // local module
 const pathUtil = require("../utils/pathUtil");
-const filePath = path.join(pathUtil, "data", "homeData.json");
+const hoemFilePath = path.join(pathUtil, "data", "homeData.json");
 
 module.exports = class Home {
   constructor(name, price, location, rating, imageUrl) {
@@ -14,18 +14,28 @@ module.exports = class Home {
     this.rating = rating;
     this.imageUrl = imageUrl;
   }
+
   save() {
-    this.id = Math.floor(Math.random() * 100).toString();
     Home.fetchhAll((registerHome) => {
-      registerHome.push(this);
-      fs.writeFile(filePath, JSON.stringify(registerHome), (err) => {
+      if (this.id) {
+        // edit home case
+        registerHome = registerHome.map((home) => {
+          return home.id === this.id ? this : home;
+        });
+      } else {
+        // add home case
+        this.id = Math.floor(Math.random() * 100).toString();
+        registerHome.push(this);
+      }
+
+      fs.writeFile(hoemFilePath, JSON.stringify(registerHome), (err) => {
         console.log("file write Concluded : ", err);
       });
     });
   }
 
   static fetchhAll(callBack) {
-    fs.readFile(filePath, (err, data) => {
+    fs.readFile(hoemFilePath, (err, data) => {
       callBack(!err ? JSON.parse(data) : []);
     });
   }

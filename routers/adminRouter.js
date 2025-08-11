@@ -7,8 +7,10 @@ const adminCon = require("../controllers/adminCon");
 // get req
 adminRoute.get("/add-homeForm", adminCon.getAddHome);
 adminRoute.get("/admin-home", adminCon.getAdminHome);
+adminRoute.get("/edit-home/:homeId", adminCon.getEditHome);
 
 // post req
 adminRoute.post("/homeAdded", adminCon.postAddHome);
+adminRoute.post("/edit-home", adminCon.postUpdateHome);
 
 module.exports = adminRoute;

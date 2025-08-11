@@ -5,14 +5,10 @@
     <%- include("../partials/nav") %>
 
       <main class="container mx-auto px-4 py-10">
-        <h2 class="text-3xl font-bold text-red-500 text-center mb-10">
-          Here are our admin homes page :
-        </h2>
-
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           <% homes.forEach(home=> { %>
             <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-              <img class="h-48 w-full object-cover" src="<%= home.imageURL" alt="<%= home.name %>" />
+              <img class="h-48 w-full object-cover" src="<%= home.imageUrl %>" alt="<%= home.name %>" />
               <div class="p-4">
                 <h3 class="text-lg font-semibold mb-1 truncate">
                   <%= home.name %>
@@ -30,8 +26,8 @@
                 </span>
               </div>
               <div class="ml-4 mb-2.5">
-                <button
-                  class="py-2 px-8  font-medium rounded-tr-2xl rounded-bl-2xl text-gray-900 bg-yellow-500 ml-2.5 mb-3">Edit</button>
+                <a href="/edit-home/<%= home.id %>?editing=true"
+                  class="py-2 px-8  font-medium rounded-tr-2xl rounded-bl-2xl text-gray-900 bg-yellow-500 ml-2.5 mb-3">Edit</a>
                 <button
                   class="py-2 px-8 bg-red-500 font-medium rounded-tr-2xl rounded-bl-2xl text-amber-50 ml-2.5 mb-3">Delete
                 </button>

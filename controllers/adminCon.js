@@ -1,23 +1,29 @@
 const home = require("../models/homeModel");
 
 exports.getAddHome = (req, res) => {
-  res.render("admin/add-home", {
+  res.render("admin/edit-home", {
     pageTitle: "Add Home To Airbnb",
     currantPage: "addHome",
+    editing: false,
   });
 };
 
-exports.postAddHome = (req, res) => {
-  console.log("Home Registeration successful for : ", req.body);
+exports.getEditHome = (req, res) => {
+  const homeId = req.params.homeId;
+  const editing = req.query.editing === "true";
 
-  const { name, price, location, rating, imageUrl } = req.body;
+  home.findById(homeId, (home) => {
+    if (!home) {
+      console.log("Not Found Editing Page");
+      return res.redirect("/admin-home");
+    }
 
-  const createHome = new home(name, price, location, rating, imageUrl);
-  createHome.save();
-
-  res.render("admin/home-added", {
-    pageTitle: "Home Added Successfully",
-    currantPage: "homeAdded",
+    res.render("admin/edit-home", {
+      home: home,
+      pageTitle: "Your Edite Home",
+      currantPage: "addHome",
+      editing: editing,
+    });
   });
 };
 
@@ -29,4 +35,25 @@ exports.getAdminHome = (req, res) => {
       currantPage: "admin-home",
     });
   });
+};
+
+exports.postAddHome = (req, res) => {
+  console.log("Home Registeration successful for : ", req.body);
+
+  const { name, price, location, rating, imageUrl } = req.body;
+
+  const createHome = new home(name, price, location, rating, imageUrl);
+  createHome.save();
+
+  res.render("admin/home-added");
+};
+
+exports.postUpdateHome = (req, res) => {
+  const { id, name, price, location, rating, imageUrl } = req.body;
+
+  const updateHome = new home(name, price, location, rating, imageUrl);
+  updateHome.id = id;
+  updateHome.save();
+
+  res.redirect("/admin-home");
 };

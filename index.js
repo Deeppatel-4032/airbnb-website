@@ -18,7 +18,7 @@ const errorCon = require("./controllers/errorCon");
 
 // static path connect css file
 app.use(express.static(path.join(rootPath, "public/css")));
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.set("view engine", "ejs");
