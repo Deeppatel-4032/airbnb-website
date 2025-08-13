@@ -25,12 +25,14 @@
                   <%= home.rating %> Rating
                 </span>
               </div>
-              <div class="ml-4 mb-2.5">
+              <div class="ml-4 mb-2.5 flex">
                 <a href="/edit-home/<%= home.id %>?editing=true"
                   class="py-2 px-8  font-medium rounded-tr-2xl rounded-bl-2xl text-gray-900 bg-yellow-500 ml-2.5 mb-3">Edit</a>
-                <button
-                  class="py-2 px-8 bg-red-500 font-medium rounded-tr-2xl rounded-bl-2xl text-amber-50 ml-2.5 mb-3">Delete
-                </button>
+                <form action="/delete-home/<%= home.id %>" method="post">
+                  <button type="submit"
+                    class="py-2 px-8 bg-red-500 font-medium rounded-tr-2xl rounded-bl-2xl text-amber-50 ml-2.5 mb-3">Delete
+                  </button>
+                </form>
               </div>
             </div>
             <% }) %>

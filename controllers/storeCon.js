@@ -43,14 +43,6 @@ exports.getFavourite = (req, res) => {
   });
 };
 
-exports.postAddToFavourite = (req, res) => {
-  console.log("add to favourites", req.body);
-  Favourite.addToFavourite(req.body.id, (err) => {
-    if (err) console.log("error while marking favourite : ", err);
-    res.redirect("/favourite-list");
-  });
-};
-
 exports.getHoemDetails = (req, res) => {
   const homeId = req.params.homeId;
   console.log("_id", homeId);
@@ -66,5 +58,24 @@ exports.getHoemDetails = (req, res) => {
         currantPage: "home",
       });
     }
+  });
+};
+
+exports.postAddToFavourite = (req, res) => {
+  console.log("add to favourites", req.body);
+  Favourite.addToFavourite(req.body.id, (err) => {
+    if (err) console.log("error while marking favourite : ", err);
+    res.redirect("/favourite-list");
+  });
+};
+
+exports.postRemoveFromFavourite = (req, res) => {
+  let { homeId } = req.params;
+
+  Favourite.deleteById(homeId, (error) => {
+    if (error) {
+      console.log("error while Deleteing >>> ", error);
+    }
+    res.redirect("/favourite-list");
   });
 };

@@ -4,6 +4,7 @@ const path = require("path");
 
 // local module
 const pathUtil = require("../utils/pathUtil");
+const Favourite = require("./favuriteModel");
 const hoemFilePath = path.join(pathUtil, "data", "homeData.json");
 
 module.exports = class Home {
@@ -44,6 +45,18 @@ module.exports = class Home {
     this.fetchhAll((homes) => {
       const foundHome = homes.find((home) => home.id === homeId);
       callBack(foundHome);
+    });
+  }
+
+  static deleteById(homeId, callBack) {
+    this.fetchhAll((homes) => {
+      const deleteHome = homes.filter((home) => home.id !== homeId);
+      fs.writeFile(hoemFilePath, JSON.stringify(deleteHome), (error) => {
+        if (error) {
+          console.log("error delete from files", error);
+        }
+        Favourite.deleteById(homeId, callBack);
+      });
     });
   }
 };

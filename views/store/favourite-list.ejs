@@ -28,6 +28,12 @@
                   <%= home.rating %> Rating
                 </span>
               </div>
+              <form action="/favourite/delete/<%= home.id %>" method="post">
+                <button
+                  class="font-medium rounded-tr-2xl rounded-bl-2xl text-amber-50 ml-2.5 mb-3 p-2 px-7 bg-red-500 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-red-400 hover:text-gray-900 ...">
+                  Remove Form Favourites
+                </button>
+              </form>
             </div>
             <% }) %>
         </div>

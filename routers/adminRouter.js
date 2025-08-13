@@ -12,5 +12,6 @@ adminRoute.get("/edit-home/:homeId", adminCon.getEditHome);
 // post req
 adminRoute.post("/homeAdded", adminCon.postAddHome);
 adminRoute.post("/edit-home", adminCon.postUpdateHome);
+adminRoute.post("/delete-home/:homeId", adminCon.postDeleteHome);
 
 module.exports = adminRoute;
